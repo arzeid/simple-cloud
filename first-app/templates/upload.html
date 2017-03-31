@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Upload</title>
+    <link rel="stylesheet" href="/static/style/dropzone.css">
+    <link rel="stylesheet" href="/static/style/upload.css">
+</head>
+
+<body>
+    <button class="button upload-button" id="submit-button">Upload</button>
+    <button class="button select-button" id="select-button">Add File(s)</button>
+    <button class="button clear-button"  id="clear-button">Clear Dropzone</button>
+
+    <form id="custom-dropzone" action={{ url_for('upload_file') }} class="dropzone"></form>
+
+    <div id="notification-zone"></div>
+
+    <div id="uploaded-files">
+        {% for item in filelist %}
+        <div class="file-info">
+        <a href="{{ item.url }}">
+            <p classs="leftalign">
+                {{ item.name }}
+                <span class="rightalign">
+                    {{ item.size }}
+                </span>
+            </p>
+        </a>
+        </div>
+        {% endfor %}
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    </script>
+    <script type="text/javascript" src="/static/libraries/dropzone.js"></script>
+    <script type="text/javascript" src="/static/js/upload.js"></script>
+</body>
+</html>

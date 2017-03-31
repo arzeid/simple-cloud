@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik');
+
+* {font-family: 'Rubik', sans-serif;}
+
+.dropzone {
+    min-height: 170px;
+    border: 2px dashed rgba(0, 0, 0, 0.3);
+    background: white;
+    padding: 5px 5px;
+    margin-bottom: 4px;
+    margin-left: 1px;
+    margin-right: 1px;
+}
+
+.button {
+    background-color: white; 
+    color: black; 
+    border: 2px solid;
+    padding: 1px 4px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px 1px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.upload-button { border-color: #4CAF50; }
+.upload-button:hover { background-color: #4CAF50; color: white; }
+
+.select-button { border-color: #008CBA; }
+.select-button:hover { background-color: #008CBA; color: white; }
+
+.clear-button { border-color: #f44336; }
+.clear-button:hover { background-color: #f44336; color: white; }
+
+.alert {
+    padding: 4px;
+    color: white;
+    opacity: 1;
+    transition: opacity 0.6s;
+    margin-top: 4px;
+    border-radius: 6px;
+}
+
+.alert.error {background-color: #f44336;}
+.alert.success {background-color: #4CAF50;}
+.alert.info {background-color: #2196F3;}
+.alert.warning {background-color: #ff9800;}
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover { color: black; }
+
+.leftalign{text-align:left;}
+.rightalign{float:right;}
+
+.file-info {
+    color: black; 
+    border: 2px solid #b3b3b3;
+    padding: 0px 0px;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 0px 0px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    margin-top: 0px;
+    padding: 4px;
+}
+
+.file-info:hover { 
+    background-color: #b3b3b3;
+}
+
+.file-info a{  
+    text-decoration: none;
+    font-size: 16px;
+    color: black;
+}
+
+.file-info *{  
+    padding: 0px 0px;
+    margin: 0px 0px;
+}
+
+#uploaded-files {
+    margin-top: 4px;
+}
+
+#uploaded-files .file-info:not(:first-child) {
+    border-top: none; /* Prevent double borders */
+}
