@@ -4,7 +4,7 @@
 
 .dropzone {
     min-height: 170px;
-    border: 2px dashed rgba(0, 0, 0, 0.3);
+    border: 2px dashed #b3b3b3;
     background: white;
     padding: 5px 5px;
     margin-bottom: 4px;
@@ -80,9 +80,7 @@
     padding: 4px;
 }
 
-.file-info:hover { 
-    background-color: #b3b3b3;
-}
+.file-info:hover { background-color: #b3b3b3; }
 
 .file-info a{  
     text-decoration: none;
@@ -90,15 +88,9 @@
     color: black;
 }
 
-.file-info *{  
-    padding: 0px 0px;
-    margin: 0px 0px;
-}
+.file-info *{ padding: 0px 0px; margin: 0px 0px;}
 
-#uploaded-files {
-    margin-top: 4px;
-}
+#uploaded-files { margin-top: 4px; }
 
-#uploaded-files .file-info:not(:first-child) {
-    border-top: none; /* Prevent double borders */
-}
+/* Prevent double borders */
+#uploaded-files .file-info:not(:first-child) { border-top: none; }

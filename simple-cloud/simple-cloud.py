@@ -61,11 +61,21 @@ def download_file(filename):
 
 @app.errorhandler(400)
 def custom400(error):
-    return make_response(jsonify({'message': error.description['message']}),400)
+    response_dict = dict()
+    response_dict['message'] = error.description['message']
+    return make_response(jsonify(response_dict),400)
+
+@app.errorhandler(404)
+def custom404(error):
+    response_dict = dict()
+    response_dict['message'] = 'The file you requested is not on the server'
+    return make_response(jsonify(response_dict),404)
 
 @app.errorhandler(409)
 def custom409(error):
-    return make_response(jsonify({'message': error.description['message']}),409)
+    response_dict = dict()
+    response_dict['message'] = error.description['message']
+    return make_response(jsonify(response_dict),409)
 
 def allowed_file(filename):
     """ return True if the filename is acceptable """
