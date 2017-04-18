@@ -68,15 +68,38 @@ function createAlert(level, message) {
 
 function addFile(name,size,url) {
     var s1 = '<div class="file-info"><a href="';
-    var s2 = '"><p classs="leftalign">'
-    var s3 = '<span class="rightalign">';
-    var s4 = '</span></p></a></div>';
-    var html = s1+url+s2+name+s3+size+s4;
+    var s2 = '" target="_blank"><p class="leftalign">';
+    var s3 = '<span class="rightalign"><span class="file-size">';
+    var s4 = '</span><span class="delete-button">&times;</span>';
+    var s5 = '</span></p></a></div>';
+    var html = s1+url+s2+name+s3+size+s4+s5;
     $("#uploaded-files").prepend(html);
+}
+
+function deleteFile(url,div) {
+    $.ajax({
+        type:"DELETE",
+        url:url,
+        contentType:"application/json; charset=utf-8",
+        dataType:"json",
+        success:function (response) {
+            div.remove();
+            createAlert('success', response.message);
+        },
+        error: function (xhr, status, error) {
+            createAlert('error', jQuery.parseJSON(xhr.responseText).message);
+        }
+    });
 }
 
 $("#notification-zone").on("click", ".closebtn", function() {
     var div = this.parentElement;
     div.style.opacity = "0";
     setTimeout(function(){ div.style.display = "none"; }, 600);
+});
+
+$("#uploaded-files").on("click", ".delete-button", function(e) {
+    e.preventDefault();
+    var div = this.parentElement.parentElement.parentElement;
+    deleteFile(div.getAttribute("href"),div.parentElement);
 });

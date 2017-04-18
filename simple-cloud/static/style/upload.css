@@ -42,7 +42,6 @@
     opacity: 1;
     transition: opacity 0.6s;
     margin-top: 4px;
-    border-radius: 6px;
 }
 
 .alert.error {background-color: #f44336;}
@@ -81,14 +80,20 @@
 }
 
 .file-info:hover { background-color: #b3b3b3; }
+.file-info:hover .file-size{ display: none; }
+.file-info:hover .delete-button { display: block; }
 
-.file-info a{  
+.file-info a{
     text-decoration: none;
     font-size: 16px;
     color: black;
 }
 
 .file-info *{ padding: 0px 0px; margin: 0px 0px;}
+
+.delete-button { display: none; color: white; }
+.delete-button:hover { color: black; }
+
 
 #uploaded-files { margin-top: 4px; }
 

@@ -20,10 +20,11 @@
         {% for item in filelist %}
         <div class="file-info">
         <a href="{{ item.url }}" target="_blank">
-            <p classs="leftalign">
+            <p class="leftalign">
                 {{ item.name }}
                 <span class="rightalign">
-                    {{ item.size }}
+                    <span class="file-size">{{ item.size }}</span>
+                    <span class="delete-button">&times;</span>
                 </span>
             </p>
         </a>

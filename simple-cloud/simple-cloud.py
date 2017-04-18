@@ -59,6 +59,20 @@ def get_files():
 def download_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
+@app.route('/files/<filename>', methods=['DELETE'])
+def delete_file(filename):
+    file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+
+    if not os.path.isfile(file_path):
+        abort(404, filename+' is not on the server')
+
+    os.remove(file_path)
+
+    if os.path.isfile(file_path):
+        abort(409, {'message': 'unable to delete '+filename})
+
+    return jsonify({'message': filename+' deleted successfully'})
+
 @app.errorhandler(400)
 def custom400(error):
     response_dict = dict()
@@ -68,7 +82,7 @@ def custom400(error):
 @app.errorhandler(404)
 def custom404(error):
     response_dict = dict()
-    response_dict['message'] = 'The file you requested is not on the server'
+    response_dict['message'] = str(error).split(': ',1)[1]
     return make_response(jsonify(response_dict),404)
 
 @app.errorhandler(409)
